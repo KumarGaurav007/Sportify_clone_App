@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import { connectDB } from "./lib/db.js";
 import userRoutes from "./routes/user.route.js";
 import adminRoutes from "./routes/admin.route.js";
 import authRoutes from "./routes/auth.route.js";
@@ -10,7 +11,7 @@ import statsRoutes from "./routes/stats.route.js";
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+app.use(express.json()); // to parse req.body json data
 
 
 
@@ -25,4 +26,5 @@ app.use("/api/stats", statsRoutes);
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
+  connectDB();
 });
