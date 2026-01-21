@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { songs } from "./songs.model";
+import { Songs } from "./songs.model.js";
 
 const albumSchema = new mongoose.Schema({
     title: {
@@ -21,7 +21,7 @@ const albumSchema = new mongoose.Schema({
     },
     songs: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'songs'
+        ref: 'Songs'
     }],
 }, { timestamps: true });
 
