@@ -10,11 +10,17 @@ import authRoutes from "./routes/auth.route.js";
 import songsRoutes from "./routes/songs.route.js";
 import albumRoutes from "./routes/album.route.js";
 import statsRoutes from "./routes/stats.route.js";
+import cors from "cors"
 
 dotenv.config();
 const __dirname = path.resolve();
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
 app.use(express.json()); // to parse req.body json data
 
 app.use(clerkMiddleware());  // this will add auth to req obj => req.auth
