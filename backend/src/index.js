@@ -37,7 +37,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/songs", songsRoutes);
-app.use("/api/album", albumRoutes);
+app.use("/api/albums", albumRoutes);
 app.use("/api/stats", statsRoutes);
 
 app.use((err, req, res, next) => {
