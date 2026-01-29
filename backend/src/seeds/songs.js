@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Songs } from "../models/songs.model.js";
+import { Song } from "../models/song.model.js";
 import { config } from "dotenv";
 
 config();
@@ -138,10 +138,10 @@ const seedSongs = async () => {
 		await mongoose.connect(process.env.MONGODB_URI);
 
 		// Clear existing songs
-		await Songs.deleteMany({});
+		await Song.deleteMany({});
 
 		// Insert new songs
-		await Songs.insertMany(songs);
+		await Song.insertMany(songs);
 
 		console.log("Songs seeded successfully!");
 	} catch (error) {

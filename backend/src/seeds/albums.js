@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Songs } from "../models/songs.model.js";
+import { Song } from "../models/song.model.js";
 import { Album } from "../models/album.model.js";
 import { config } from "dotenv";
 
@@ -11,10 +11,10 @@ const seedDatabase = async () => {
 
 		// Clear existing data
 		await Album.deleteMany({});
-		await Songs.deleteMany({});
+		await Song.deleteMany({});
 
 		// First, create all songs
-		const createdSongs = await Songs.insertMany([
+		const createdSongs = await Song.insertMany([
 			{
 				title: "City Rain",
 				artist: "Urban Echo",
@@ -169,7 +169,7 @@ const seedDatabase = async () => {
 			const album = createdAlbums[i];
 			const albumSongs = albums[i].songs;
 
-			await Songs.updateMany({ _id: { $in: albumSongs } }, { albumId: album._id });
+			await Song.updateMany({ _id: { $in: albumSongs } }, { albumId: album._id });
 		}
 
 		console.log("Database seeded successfully!");

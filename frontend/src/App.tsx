@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom"
 import HomePage from "./pages/home/HomePage"
 import AuthCallbackPage from "./pages/auth-callback/AuthCallbackPage"
-import axios from "axios"
 import { axiosInstance } from "./lib/axios"
 import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react"
 import MainLayout from "./layout/MainLayout"
 import ChatPage from "./pages/chat/ChatPage"
+import AlbumPage from "./pages/album/AlbumPage"
 function App() {
   const getSomeData = async () => {
     await axiosInstance.get("/")
@@ -21,6 +21,7 @@ function App() {
         <Route element={<MainLayout/>}>
           <Route path="/" element={<HomePage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/albums/:albumId" element={<AlbumPage />} />
 
         </Route>
       </Routes>
