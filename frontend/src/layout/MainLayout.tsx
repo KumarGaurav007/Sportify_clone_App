@@ -2,38 +2,39 @@
 import React from "react"
 import { Outlet } from "react-router-dom"
 import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
+    ResizableHandle,
+    ResizablePanel,
+    ResizablePanelGroup,
 } from "@/components/ui/resizable"
 import LeftSidebar from "./components/LeftSidebar"
+import FriendsActivity from "./components/FriendsActivity"
 
 const MainLayout = () => {
-  const isMobile = false
+    const isMobile = false
 
-  return (
-    <div className="h-screen bg-black text-white flex flex-col">
-      <ResizablePanelGroup direction="horizontal" className="flex-1 overflow-hidden">
-        
-        <ResizablePanel defaultSize={20} minSize={isMobile ? 0 : 10} maxSize={30}>
-          <LeftSidebar/>
-        </ResizablePanel>
+    return (
+        <div className="h-screen bg-black text-white flex flex-col">
+            <ResizablePanelGroup direction="horizontal" className="flex-1 overflow-hidden">
 
-        <ResizableHandle withHandle />
+                <ResizablePanel defaultSize={20} minSize={isMobile ? 0 : 10} maxSize={30}>
+                    <LeftSidebar />
+                </ResizablePanel>
 
-        <ResizablePanel defaultSize={isMobile ? 80 : 60}>
-          <Outlet />
-        </ResizablePanel>
+                <ResizableHandle withHandle />
 
-        <ResizableHandle withHandle />
+                <ResizablePanel defaultSize={isMobile ? 80 : 60}>
+                    <Outlet />
+                </ResizablePanel>
 
-        <ResizablePanel defaultSize={20} minSize={0} maxSize={25} collapsedSize={0}>
-          Friends activity
-        </ResizablePanel>
+                <ResizableHandle withHandle />
 
-      </ResizablePanelGroup>
-    </div>
-  )
+                <ResizablePanel defaultSize={20} minSize={0} maxSize={25} collapsedSize={0}>
+                    <FriendsActivity />
+                </ResizablePanel>
+
+            </ResizablePanelGroup>
+        </div>
+    )
 }
 
 export default MainLayout
